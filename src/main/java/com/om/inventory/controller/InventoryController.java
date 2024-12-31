@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("inventory")
+@RequestMapping("/api/inventory")
 public class InventoryController {
 
     private final InventoryService inventoryService;
@@ -18,7 +18,7 @@ public class InventoryController {
         this.inventoryService = inventoryService;
     }
 
-    @GetMapping("isInStock")
+    @GetMapping("/isInStock")
     public ResponseEntity<Boolean> isInStock(@RequestParam String skuCode,@RequestParam Integer quantity){
         return new ResponseEntity<>(inventoryService.isInStock(skuCode,quantity), HttpStatus.OK);
     }
